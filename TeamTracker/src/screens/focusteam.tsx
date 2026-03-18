@@ -1,0 +1,1 @@
+// Detail screen show one item or team in detail

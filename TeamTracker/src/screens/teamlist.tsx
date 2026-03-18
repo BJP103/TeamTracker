@@ -1,0 +1,1 @@
+// Gives a list of 32 NFL teams in 2026
