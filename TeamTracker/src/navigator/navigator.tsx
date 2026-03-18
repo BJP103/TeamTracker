@@ -8,13 +8,12 @@ export type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const TeamListScreen = lazy(() => import('../screens/teamlist.tsx'));
-const BookDetailScreen = lazy(() => import('../screens/team'));
+
 
 export function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="List" component={TeamListScreen} />
-      <Stack.Screen name="Details" component={BookDetailScreen} />
     </Stack.Navigator>
   );
 }
