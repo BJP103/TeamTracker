@@ -1,14 +1,15 @@
+// Detail screen show one item or team in detail
 import { View, Text, Button } from 'react-native';
 import { router } from 'expo-router';
 
-export default function Home() {
+export default function Details() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home Screen</Text>
+      <Text>Details Screen</Text>
 
       <Button
-        title="Go to Details"
-        onPress={() => router.push('/screens/focusteam')}
+        title="Go Back"
+        onPress={() => router.back()}
       />
     </View>
   );

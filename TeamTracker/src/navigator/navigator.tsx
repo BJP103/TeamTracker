@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from '../../app/index';
-import DetailsScreen from '../screens/focusteam';
+import DetailsScreen from '../../app/screens/focusteam';
 
 const Stack = createNativeStackNavigator();
 
