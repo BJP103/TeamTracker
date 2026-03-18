@@ -1,19 +1,16 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export type RootStackParamList = {
-  Catalog: undefined;
-  Details: { bookId: string }; // Reminder: ONLY pass the ID here!
-};
+import HomeScreen from '../../app/index';
+import DetailsScreen from '../screens/focusteam';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
-const TeamListScreen = lazy(() => import('../screens/teamlist'));
+const Stack = createNativeStackNavigator();
 
-
-export function RootNavigator() {
+export default function StackNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="List" component={TeamListScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Details" component={DetailsScreen} />
     </Stack.Navigator>
   );
 }

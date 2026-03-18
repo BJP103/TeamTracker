@@ -1,1 +1,0 @@
-// The home page that displays all the information for the user in the home
