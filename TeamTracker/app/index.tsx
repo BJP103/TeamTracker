@@ -1,36 +1,29 @@
-import { View, Text, Button, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, Button, Image } from 'react-native';
 import { router } from 'expo-router';
+import { blue } from 'react-native-reanimated/lib/typescript/Colors';
 
+import { styles } from '../styles/styles';
 
 export default function Home() {
   return (
-    <ImageBackground source={require('../assets/images/wock.jpg')}
-    style={styles.background}
-    >
         
-    
     <View style={styles.container}>
-      <Text>Home Screen</Text>
+      <Image 
+        source={require('../assets/images/logo.png')}
+        style={styles.logo}
+      />
 
+      <Text style={styles.title}>Team Tracker</Text>
       <Button
-        title="Go to Details"
+        title="Team"
         onPress={() => router.push('/screens/focusteam')}
       />
+      <br />
+      <Button
+        title="View All Teams"
+        onPress={() => router.push('/screens/teamlist')}
+      />
     </View>
-    </ImageBackground>
   );
 }
 
-const styles = StyleSheet.create({
-    container:{ 
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    
-    },
-    background:{
-        width:'100%',
-        height:'100%'
-    }
-
-})
