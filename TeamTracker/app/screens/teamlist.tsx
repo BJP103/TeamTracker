@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Dimensions, Button } from 'react-native';
 import { router } from 'expo-router';
+import { Pressable } from 'react-native';
 
 type TeamLogo = {
   href: string;
@@ -44,13 +45,19 @@ export default function NFLScreen() {
         keyExtractor={(item) => item.team.id}
         numColumns={numColumns} // this makes it a grid
         renderItem={({ item }) => (
-          <View style={[styles.tile, { width: tileWidth }]}>
+          <Pressable
+            onPress={() => router.push(`./${item.team.id}`)}
+            style={({hovered, pressed}) => [styles.tile, { width: tileWidth },
+              hovered && styles.hovered,
+              pressed && styles.pressed,
+            ]}
+          >
             <Image
               source={{ uri: item.team.logos[0]?.href }}
               style={styles.logo}
             />
             <Text style={styles.teamName}>{item.team.displayName}</Text>
-          </View>
+          </Pressable>
         )}
       />
     </View>
@@ -64,12 +71,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   tile: {
+    transform: [{ scale: .95 }],
     alignItems: 'center',
     margin: 4,
     padding: 8,
     backgroundColor: '#f9f9f9',
     borderRadius: 8,
     elevation: 2, // shadow for Android
+  },
+  hovered: {
+    transform: [{ scale: 1 }],
+    transitionDuration: '.3s',
+    backgroundColor: '#c9c9c9',
+  },
+  pressed: {
+    transform: [{ scale: 1 }],
+    transitionDuration: '.3s',
+    backgroundColor: '#c9c9c9',
   },
   logo: {
     width: 50,
