@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
     teamName: {
       fontSize: 50,
-      fontWeight: 'bold',
+      fontWeight: '100',
       color: 'white',
     }
 })
