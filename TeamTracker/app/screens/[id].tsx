@@ -15,12 +15,13 @@ export default function TeamScreen() {
   const { id } = useLocalSearchParams();
   const [team, setTeam] = useState<Team | null>(null);
   const [roster, setRoster] = useState<any[]>([]);
+  const [injuries, setInjuries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!id) return;
 
-    fetch(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/${id}`)
+    fetch(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/${id}?enable=injuries`)
       .then(res => res.json())
       .then(data => {
         setTeam(data.team); // 👈 THIS is key
@@ -78,7 +79,7 @@ export default function TeamScreen() {
         <View>
           <Text style={styles.playerName}>{player.fullName}</Text>
           <Text style={styles.playerDetails}>
-            #{player.jersey} • {player.position?.name}
+            #{player.jersey} • {player.position?.name} {player.injuries?.status ? ` • ${player.injuries.status}` : ''}
           </Text>
         </View>
       </View>
@@ -112,8 +113,8 @@ const styles = StyleSheet.create({
     },
     
     playerImage: {
-      width: 50,
-      height: 50,
+      width: 100,
+      height: 100,
       marginRight: 10,
       borderRadius: 25,
     },
