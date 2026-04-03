@@ -53,6 +53,53 @@ export default function TeamScreen() {
     return <Text>Roster not found</Text>;
   }
 
+const positionOrder = [
+  'QB', 'RB', 'FB', 'WR', 'TE',
+  'OT', 'OG', 'C',
+  'DE', 'DT', 'NT',
+  'LB', 'OLB', 'MLB',
+  'CB', 'S',
+  'K', 'P', 'LS'
+];
+
+const positionMap: Record<string, string> = {
+  'Quarterback': 'QB',
+  'Running Back': 'RB',
+  'Fullback': 'FB',
+  'Wide Receiver': 'WR',
+  'Tight End': 'TE',
+  'Offensive Tackle': 'OT',
+  'Offensive Guard': 'OG',
+  'Center': 'C',
+  'Defensive End': 'DE',
+  'Defensive Tackle': 'DT',
+  'Nose Tackle': 'NT',
+  'Linebacker': 'LB',
+  'Outside Linebacker': 'OLB',
+  'Middle Linebacker': 'MLB',
+  'Cornerback': 'CB',
+  'Safety': 'S',
+  'Kicker': 'K',
+  'Punter': 'P',
+  'Long Snapper': 'LS'
+};
+
+const sortedPlayers = roster
+  .flatMap(group => group.items)
+  .sort((a, b) => {
+    const posA = positionMap[a.position?.name || ''] || a.position?.abbreviation || '';
+    const posB = positionMap[b.position?.name || ''] || b.position?.abbreviation || '';
+
+    const indexA = positionOrder.indexOf(posA);
+    const indexB = positionOrder.indexOf(posB);
+
+    // If not found in positionOrder, push to the end
+    const safeIndexA = indexA === -1 ? 999 : indexA;
+    const safeIndexB = indexB === -1 ? 999 : indexB;
+
+    return safeIndexA - safeIndexB;
+  });
+
   return (
     
   <ScrollView style={{ flex: 1, backgroundColor: tinycolor('#' + team.color).lighten(15).toString() }}>
@@ -70,7 +117,7 @@ export default function TeamScreen() {
 
   {/* ROSTER */}
   <View style={{ padding: 16 }}>
-    {roster.flatMap(group => group.items).map(player => (
+    {sortedPlayers.map(player => (
       <View key={player.id} style={styles.playerRow}>
         <Image
           source={{ uri: player.headshot?.href }}
@@ -78,6 +125,9 @@ export default function TeamScreen() {
         />
         <View>
           <Text style={styles.playerName}>{player.fullName}</Text>
+          <Text style={styles.playerDetails}>
+            {player.displayWeight} {player.displayHeight}
+          </Text>
           <Text style={styles.playerDetails}>
             #{player.jersey} • {player.position?.name} {player.injuries?.status ? ` • ${player.injuries.status}` : ''}
           </Text>
