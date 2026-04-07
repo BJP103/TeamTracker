@@ -31,8 +31,8 @@ export default function NFLScreen() {
   }, []);
 
   // calculate tile width based on screen width
-  const numColumns = 4;
-  const tileWidth = Dimensions.get('window').width / numColumns - 16; // 16 for spacing
+  const numColumns = 1;
+  const tileWidth = Dimensions.get('window').width / numColumns - 1; // 16 for spacing
 
   return (
     <View style={styles.container}>
@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#c9c9c9',
   },
   logo: {
-    width: 50,
-    height: 50,
+    width: 75,
+    height: 75,
     marginBottom: 8,
   },
   teamName: {

@@ -126,7 +126,10 @@ const sortedPlayers = roster
         <View>
           <Text style={styles.playerName}>{player.fullName}</Text>
           <Text style={styles.playerDetails}>
-            {player.displayWeight} {player.displayHeight}
+            Age: {player.age}
+          </Text>
+          <Text style={styles.playerDetails}>
+            HT/WT {player.displayHeight} {player.displayWeight} {player.status.name}
           </Text>
           <Text style={styles.playerDetails}>
             #{player.jersey} • {player.position?.name} {player.injuries?.status ? ` • ${player.injuries.status}` : ''}
