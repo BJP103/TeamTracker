@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 22,
-    fontWeight: '100',
+    fontWeight: 'bold',
     color: 'white',
     marginBottom: 12,
   },
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   newsImage: {
     width: '100%',
-    height: 180,
+    height: 350,
   },
   newsContent: {
     padding: 12,
