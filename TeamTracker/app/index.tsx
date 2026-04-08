@@ -14,13 +14,10 @@ export default function Home() {
       />
 
       <Text style={styles.title}>Team Tracker</Text>
-      <Button
-        title="Team"
-        onPress={() => router.push('/screens/focusteam')}
-      />
+     
       <br />
       <Button
-        title="View All Teams"
+        title="Pick Your Team"
         onPress={() => router.push('/screens/teamlist')}
       />
     </View>

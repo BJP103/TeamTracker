@@ -104,6 +104,11 @@ const sortedPlayers = roster
     
   <ScrollView style={{ flex: 1, backgroundColor: tinycolor('#' + team.color).lighten(15).toString() }}>
   <Button title="Back" onPress={() => router.back()} />
+    <br />
+    <Button
+        title="Select as your team"
+        onPress={() => router.push(`./${id}/focusteam`)}
+      />
 
   <View style={{ alignItems: 'center' }}>
     <Image
