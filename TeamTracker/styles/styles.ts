@@ -27,5 +27,14 @@ export const styles = StyleSheet.create({
         width: '80%',
         alignItems:'center',
 
+    },
+    selectBTN:{
+        backgroundColor:'#2563EB',
+        padding:10,
+        borderRadius: 10,
+    },
+    selectTXT:{
+        color:'white',
+        fontSize:30,
     }
 });

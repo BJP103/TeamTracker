@@ -64,7 +64,8 @@ export default function Details() {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: tinycolor('#' + team.color).lighten(15).toString() }}>
       <Button title="Go Back" onPress={() => router.back()} />
-      
+      <Button title="Go Home" onPress={() => router.push('../../')} />
+        
       <View style={{ alignItems: 'center', marginVertical: 10 }}>
         <Text style={styles.teamName}>{team.displayName}</Text>
         <Image source={{ uri: team.logos[0]?.href }} style={styles.teamLogo} />
