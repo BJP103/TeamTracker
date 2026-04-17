@@ -16,7 +16,6 @@ export default function Home() {
 
       <Text style={styles.title}>Team Tracker</Text>
      
-      <br />
 
       <Pressable
         
